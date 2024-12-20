@@ -48,11 +48,11 @@ Route::get('/about', function(){
     return view('main.about');
 })->name('about');
 
-Route::get('/contacts', function(){
+Route::get('/contact', function(){
     $data = [
         "city"=>"Moscow",
-        "street"=>"Semenovskaya",
-        "house"=>38
+        "street"=>"leninskiy prospekt",
+        "house"=>42
     ];
 
     return view('main.contact', ['data'=>$data]);
