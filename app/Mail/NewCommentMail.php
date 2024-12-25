@@ -29,7 +29,7 @@ class NewCommentMail extends Mailable
     {
         return new Envelope(
             // from: new Address('moosbeere_O@mail.ru', 'Olga'),
-            from: env('MAIL_FROM_ADDRESS'),
+            from: new Address(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME')),
             subject: 'New Comment Mail',
         );
     }
