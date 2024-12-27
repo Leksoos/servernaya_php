@@ -6,6 +6,7 @@ use App\Models\Comment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\StatMail;
+use App\Mail\NewCommentMail;
 class SendStatCommand extends Command
 {
     /**
@@ -28,6 +29,6 @@ class SendStatCommand extends Command
         $article_count = SaveClick::count();
         SaveClick::whereNotNull('id')->delete();
         $comment_count = Comment::whereDate('created_at', Carbon::today())->count();
-        Mail::to('moosbeere_O@mail.ru')->send(new StatMail($article_count, $comment_count));
+        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new StatMail($article_count, $comment_count));
     }
 }
